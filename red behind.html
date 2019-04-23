@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Manual Z Index</title>
+    <style>
+      #wrapper{
+        position: relative;
+        height: 300px;
+      }
+      .box{
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 200px;
+        height: 200px;
+        color: lightgray;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px black;
+      }
+      #box::selection{
+        background:transparent;
+      }
+      #red{
+        background-color: red;
+        top: 0px;
+        left: 0px;
+      }
+      #blue{
+        background-color: blue;
+        top: 100px;
+        left: 100px;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      My favorite position is
+      <span id="favorite">behind</span>
+      the blue box
+    </h1>
+    <div id="wrapper">
+      <div class="box" id="red">
+        Red
+      </div>
+      <div class="box" id="blue">
+        Blue
+      </div>
+    </div>
+    <select id="select">
+      <option value="0">behind</option>
+      <option value="2">in front of</option>
+    </select>
+    <script>
+      const favorite = document.querySelector('#favorite')
+      const select = document.querySelector('#select')
+      const redBox = document.querySelector('#red')
+
+      function changeFavorite(){
+        redBox.style.zIndex = select.value
+        favorite.textContent = select.options[select.selectedIndex].text
+      }
+
+      select.addEventListener('change', changeFavorite)
+    </script>
+  </body>
+</html>

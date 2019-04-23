@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Manual Shapes</title>
+    <style>
+      #shape{
+        display: grid;
+        place-items: center;
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+        color: lightgray;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px black;
+        transition: all 0.4s;
+        background-color: red;
+      }
+      #shape::selection{
+        background:transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      My favorite shape is a
+      <span id="favorite">
+        square
+      </span>
+    </h1>
+    <div id="shape" style="border-radius: 0%;">
+      Click Me
+    </div>
+    <script>
+
+      //query the Dom
+      const shape     = document.querySelector('#shape')
+      const favorite  = document.querySelector('#favorite')
+
+      //eventListener 
+      shape.addEventListener('click', changeShape)
+ 
+      //event handler
+      function changeShape(){
+        if(favorite.textContent === 'square'){
+          shape.style.borderRadius = '100%'
+          favorite.textContent = 'circle'
+        }else{
+          shape.style.borderRadius = '0%'
+          favorite.textContent = 'square'
+        }
+      }
+    </script>
+  </body>
+</html>

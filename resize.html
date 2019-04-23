@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Resize Me!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body{
+      display: grid;
+      place-items: center;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      background: aliceblue;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Window Width: <span id="width">0</span>px</h1>
+    <h1>Window Height: <span id="height">0</span>px</h1>
+    <script>
+      const width = document.querySelector('#width')
+      const height = document.querySelector('#height')
+
+      function measure(){
+        width.textContent = window.innerWidth
+        height.textContent = window.innerHeight
+      }
+
+      window.addEventListener('resize', measure)
+      measure()
+    </script>
+  </body>
+</html>

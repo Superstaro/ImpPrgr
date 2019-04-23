@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Manual Movement</title>
+    <style>
+      #box{
+        position: relative;
+        background-color: lightgray;
+        width: 1150px;
+        height: 500px;
+      }
+      #circle{
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+        color: lightgray;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px black;
+        transition: all 0.4s;
+        background-color: red;
+        border-radius: 100%;
+      }
+      #circle::selection{
+        background:transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      My favorite place in the box is
+      <span id="left">0</span>
+      pixels from the left and
+      <span id="top">0</span>
+      pixels from the top
+    </h1>
+    <div id="box">
+      <div id="circle" style="left: 0px; top: 0px;">
+        Click Me
+      </div>
+    </div>
+    <script>
+      const circle = document.querySelector('#circle')
+      const box = document.querySelector('#box')
+      const leftSpan = document.querySelector('#left')
+      const topSpan = document.querySelector('#top')
+
+      function changePosition(){
+        const leftAmount = Math.round(Math.random() * (box.clientWidth - circle.clientWidth))
+        const topAmount = Math.round(Math.random() * (box.clientHeight - circle.clientHeight))
+        circle.style.left = `${leftAmount}px`
+        circle.style.top = `${topAmount}px`
+        leftSpan.textContent = leftAmount
+        topSpan.textContent = topAmount
+      }
+
+      circle.addEventListener('click', changePosition)
+    </script>
+  </body>
+</html>
